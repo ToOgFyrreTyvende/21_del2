@@ -6,7 +6,7 @@ import functionality.IUserFunctionality;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TUI {
+public class TUI implements IUI{
     private IUserFunctionality func;
     private Scanner scan;
     private boolean keepGoing = true;
@@ -15,6 +15,7 @@ public class TUI {
         this.func = func;
     }
 
+    @Override
     public void showMenu(){
         while (keepGoing){
             scan = new Scanner(System.in);
