@@ -41,8 +41,22 @@ public class MettlerScale implements IMettlerScale {
     }
 
     @Override
-    public String tareWeight(String text) {
+    public String taraWeight(String text) {
         return null;
+    }
+
+    @Override
+    public String getWeight() {
+        // Read the current weight number from the weight
+        scaleRequest(String.format("S"));
+        String returnWeight = "";
+        try {
+            returnWeight = in.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return returnWeight.split("\"")[1];
     }
 
     private String scaleRequest(String text){
