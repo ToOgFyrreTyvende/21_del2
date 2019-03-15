@@ -1,7 +1,7 @@
 package functionality;
 
-import data.dal.IUserDAO.*;
-import data.dto.UserDTO;
+import dal.IUserDAO.*;
+import dto.UserDTO;
 
 import java.util.List;
 

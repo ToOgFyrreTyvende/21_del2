@@ -1,4 +1,4 @@
-package data.dal;
+package services;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -32,7 +32,17 @@ public class MettlerScale implements IMettlerScale {
             e.printStackTrace();
         }
 
-        return returnString;
+        return returnString.split("\"")[1];
+    }
+
+    @Override
+    public String awaitConfirmation(String text) {
+        return null;
+    }
+
+    @Override
+    public String tareWeight(String text) {
+        return null;
     }
 
     private String scaleRequest(String text){

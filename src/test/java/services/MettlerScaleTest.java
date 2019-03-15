@@ -1,6 +1,7 @@
-package data.dal;
+package services;
 
 import org.junit.jupiter.api.Test;
+import services.MettlerScale;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,8 +1,7 @@
 import functionality.IUserFunctionality;
 import functionality.UserFunctionality;
 import ui.TUI;
-import data.dal.*;
-import data.dto.UserDTO;
+import dal.*;
 
 import java.io.IOException;
 import java.sql.SQLOutput;

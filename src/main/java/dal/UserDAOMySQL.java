@@ -1,6 +1,6 @@
-package data.dal;
+package dal;
 
-import data.dto.UserDTO;
+import dto.UserDTO;
 
 import java.sql.*;
 import java.util.ArrayList;

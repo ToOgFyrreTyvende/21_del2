@@ -1,7 +1,7 @@
-package data.dal;
+package dal;
 
-import data.dto.UserDTO;
-import data.dto.UserDTO;
+import dto.UserDTO;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;

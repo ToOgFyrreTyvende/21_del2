@@ -1,6 +1,6 @@
 package ui;
 
-import data.dto.UserDTO;
+import dto.UserDTO;
 import functionality.IUserFunctionality;
 
 import java.util.InputMismatchException;

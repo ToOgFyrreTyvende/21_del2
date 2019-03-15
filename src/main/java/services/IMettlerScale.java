@@ -1,4 +1,4 @@
-package data.dal;
+package services;
 
 public interface IMettlerScale {
     String requestUserInput(String text);
