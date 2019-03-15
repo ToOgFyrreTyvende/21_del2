@@ -6,7 +6,7 @@ import dal.IUserDAO;
 import dal.UserDAOMySQL;
 import dto.UserDTO;
 import org.junit.jupiter.api.*;
-import utils.SQLTools;
+import utils.CreateDB;
 
 class UserFunctionalityTest {
     // Vars
@@ -18,7 +18,8 @@ class UserFunctionalityTest {
     @BeforeAll
     static void setUpTestTable() {
         // Generate test table
-        SQLTools.generateTable(dbTestName);
+        CreateDB creator = new CreateDB();
+        creator.generateTable(dbTestName);
     }
 
     @BeforeEach
