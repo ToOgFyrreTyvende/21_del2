@@ -4,40 +4,41 @@ import dal.IUserDAO;
 import dto.UserDTO;
 
 import java.util.List;
+
 import dal.IUserDAO.*;
 
 
 public class UserFunctionality implements IUserFunctionality {
-    IUserDAO userDAO;
+    private IUserDAO userDAO;
 
-    public UserFunctionality(IUserDAO userDAO) {
+    public UserFunctionality(IUserDAO userDAO){
         this.userDAO = userDAO;
     }
 
     @Override
-    public UserDTO getUser(int userId) throws UserInputException {
+    public UserDTO getUser(int userId) throws UserInputException{
         if (userId >= 11 && userId <= 99){
-            try {
+            try{
                 return userDAO.getUser(userId);
-            } catch (DALException e) {
+            } catch (DALException e){
                 throw new UserInputException(e.getMessage());
             }
-        }else {
+        } else {
             throw new UserInputException("Ugyldigt bruger ID. Indtast venligst et bruger ID mellem 11 og 99 (inklusivt)");
         }
     }
 
     @Override
-    public List<UserDTO> getUserList() throws DALException {
+    public List<UserDTO> getUserList() throws DALException{
         return userDAO.getUserList();
     }
 
     @Override
-    public void createUser(UserDTO user) throws UserInputException {
+    public void createUser(UserDTO user) throws UserInputException{
         if (user.getUserId() >= 11 && user.getUserId() <= 99){
-            try {
+            try{
                 userDAO.createUser(user);
-            } catch (DALException e) {
+            } catch (DALException e){
                 throw new UserInputException("Fejl, kan være bruger oplysninger. " + e.getMessage());
             }
         } else {
@@ -46,19 +47,19 @@ public class UserFunctionality implements IUserFunctionality {
     }
 
     @Override
-    public void updateUser(UserDTO user) throws UserInputException {
-        try {
+    public void updateUser(UserDTO user) throws UserInputException{
+        try{
             userDAO.updateUser(user);
-        } catch (DALException e) {
+        } catch (DALException e){
             throw new UserInputException("Fejl, kan være bruger oplysninger. " + e.getMessage());
         }
     }
 
     @Override
-    public void deleteUser(int userId) throws UserInputException {
-        try {
+    public void deleteUser(int userId) throws UserInputException{
+        try{
             userDAO.deleteUser(userId);
-        } catch (DALException e) {
+        } catch (DALException e){
             throw new UserInputException("Fejl, kan være bruger ID. " + e.getMessage());
         }
     }
