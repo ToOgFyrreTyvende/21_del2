@@ -8,16 +8,16 @@ import java.net.Socket;
 
 public class MettlerScale implements IMettlerScale {
 
-    Socket pingSocket = null;
-    PrintWriter out = null;
-    BufferedReader in = null;
+    private Socket pingSocket = null;
+    private PrintWriter out = null;
+    private BufferedReader in = null;
 
-    public MettlerScale(String host, int port) {
-        try {
+    public MettlerScale(String host, int port){
+        try{
             pingSocket = new Socket(host, port);
             out = new PrintWriter(pingSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(pingSocket.getInputStream()));
-        } catch (IOException e) {
+        } catch (IOException e){
             return;
         }
     }
@@ -26,9 +26,9 @@ public class MettlerScale implements IMettlerScale {
         // We already return a read line from the following command. RM20 uses #2 response
         scaleRequest(String.format("RM20 8 \"%s\" \"\" \"&3\"", text));
         String returnString = "";
-        try {
+        try{
             returnString = in.readLine();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
 
@@ -36,23 +36,23 @@ public class MettlerScale implements IMettlerScale {
     }
 
     @Override
-    public String awaitConfirmation(String text) {
+    public String awaitConfirmation(String text){
         return null;
     }
 
     @Override
-    public String taraWeight(String text) {
+    public String taraWeight(String text){
         return null;
     }
 
     @Override
-    public String getWeight() {
+    public String getWeight(){
         // Read the current weight number from the weight
         scaleRequest(String.format("S"));
         String returnWeight = "";
-        try {
+        try{
             returnWeight = in.readLine();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
 
@@ -62,12 +62,12 @@ public class MettlerScale implements IMettlerScale {
     private String scaleRequest(String text){
         out.println(text);
         String returnString = "";
-        try {
+        try{
             returnString = in.readLine();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
 
-        return  returnString;
+        return returnString;
     }
 }
