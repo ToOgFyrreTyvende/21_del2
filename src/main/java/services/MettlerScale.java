@@ -48,7 +48,7 @@ public class MettlerScale implements IMettlerScale {
     @Override
     public String getWeight(){
         // Read the current weight number from the weight
-        scaleRequest(String.format("S"));
+        scaleRequest("S");
         String returnWeight = "";
         try{
             returnWeight = in.readLine();
