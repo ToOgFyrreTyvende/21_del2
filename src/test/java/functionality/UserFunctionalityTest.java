@@ -16,14 +16,14 @@ class UserFunctionalityTest {
     private UserDTO testUser2;
 
     @BeforeAll
-    static void setUpTestTable() {
+    static void setUpTestTable(){
         // Generate test table
         CreateDB creator = new CreateDB();
         creator.generateTable(dbTestName);
     }
 
     @BeforeEach
-    void setUp() {
+    void setUp(){
         // reset dao and func before each test is run
         IUserDAO dao = new UserDAOMySQL(dbTestName);
         func = new UserFunctionality(dao);
@@ -46,7 +46,7 @@ class UserFunctionalityTest {
     }
 
     @Test
-    void createUpdateDeleteUser() throws IUserFunctionality.UserInputException, IUserDAO.DALException {
+    void createUpdateDeleteUser() throws IUserFunctionality.UserInputException, IUserDAO.DALException{
         // Create 'testUser1' in database
         func.createUser(testUser1);
         // Check user was correctly created
@@ -70,7 +70,7 @@ class UserFunctionalityTest {
     }
 
     @Test
-    void exceptionTesting() {
+    void exceptionTesting(){
         IUserFunctionality.UserInputException createThrown = assertThrows(IUserFunctionality.UserInputException.class,
                 () -> func.createUser(testUser2),
                 "Should throw a nice custom error... But i guess not");

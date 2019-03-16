@@ -6,7 +6,7 @@ import functionality.IUserFunctionality;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TUI implements IUI{
+public class TUI implements IUI {
     private IUserFunctionality func;
     private Scanner scan;
     private boolean keepGoing = true;

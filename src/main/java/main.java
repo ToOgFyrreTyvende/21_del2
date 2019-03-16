@@ -4,10 +4,9 @@ import ui.TUI;
 import dal.*;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class main {
-    public static void main(String[] args) throws IOException, IUserDAO.DALException {
+    public static void main(String[] args) throws IOException, IUserDAO.DALException{
 
         //utils.SQLTools.generateTable();
         //IUserDAO daoDisk = new UserDAODisk();

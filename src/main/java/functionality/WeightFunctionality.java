@@ -2,35 +2,35 @@ package functionality;
 
 import services.MettlerScale;
 
-public class WeightFunctionality implements IWeightFunctionality{
+public class WeightFunctionality implements IWeightFunctionality {
     private MettlerScale scale;
 
-    public WeightFunctionality(MettlerScale scale) {
+    public WeightFunctionality(MettlerScale scale){
         this.scale = scale;
     }
 
     @Override
-    public String demandWeightInput(String msg) {
+    public String demandWeightInput(String msg){
         return scale.requestUserInput(msg);
     }
 
     @Override
-    public void getConfirmation(String msg) {
+    public void getConfirmation(String msg){
 
     }
 
     @Override
-    public void taraWeight() {
+    public void taraWeight(){
 
     }
 
     @Override
-    public String getWeight() {
+    public String getWeight(){
         return scale.getWeight();
     }
 
     @Override
-    public void sendMessage(String msg) {
+    public void sendMessage(String msg){
 
     }
 }
