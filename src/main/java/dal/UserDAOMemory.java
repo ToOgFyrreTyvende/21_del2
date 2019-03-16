@@ -8,14 +8,14 @@ import java.util.List;
 public class UserDAOMemory implements IUserDAO {
     //TODO: implement this shit
 
-    List<UserDTO> users;
+    private List<UserDTO> users;
 
-    public UserDAOMemory() {
+    public UserDAOMemory(){
         users = new ArrayList<>();
     }
 
     @Override
-    public UserDTO getUser(int userId) throws DALException {
+    public UserDTO getUser(int userId) throws DALException{
         for (UserDTO user : users){
             if (user.getUserId() == userId){
                 return user;
@@ -25,30 +25,30 @@ public class UserDAOMemory implements IUserDAO {
     }
 
     @Override
-    public List<UserDTO> getUserList() throws DALException {
+    public List<UserDTO> getUserList() throws DALException{
         return users;
     }
 
     @Override
-    public void createUser(UserDTO user) throws DALException {
+    public void createUser(UserDTO user) throws DALException{
         users.add(user);
     }
 
     @Override
-    public void updateUser(UserDTO user) throws DALException {
+    public void updateUser(UserDTO user) throws DALException{
         int userID = user.getUserId();
 
         int i = 0;
         for (UserDTO upUser : users){
             if (upUser.getUserId() == userID){
-                users.set(i,upUser);
+                users.set(i, upUser);
             }
             i++;
         }
     }
 
     @Override
-    public void deleteUser(int userId) throws DALException {
+    public void deleteUser(int userId) throws DALException{
         int i = 0;
         for (UserDTO user : users){
             if (user.getUserId() == userId){
