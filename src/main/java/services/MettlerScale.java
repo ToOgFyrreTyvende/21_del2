@@ -48,15 +48,12 @@ public class MettlerScale implements IMettlerScale {
     @Override
     public String getWeight(){
         // Read the current weight number from the weight
-        scaleRequest("S");
-        String returnWeight = "";
-        try{
-            returnWeight = in.readLine();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+        return scaleRequest("S").split(" ")[6];
+    }
 
-        return returnWeight.split("\"")[1];
+    @Override
+    public boolean isConnected(){
+        return pingSocket.isConnected();
     }
 
     private String scaleRequest(String text){
