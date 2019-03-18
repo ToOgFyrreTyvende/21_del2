@@ -4,7 +4,7 @@ package functionality;
 // TODO: Check methods parameters make sense
 // Very early stage, error may... nay... WILL occur!
 public interface IWeightFunctionality {
-    String demandWeightInput(String msg);
+    String requestInput(String msg);
     //UserDTO getUser(int userID) throws UserInputException;
     void getConfirmation(String msg);
     void taraWeight();
