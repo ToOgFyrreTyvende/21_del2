@@ -20,7 +20,7 @@ public class WeightUI implements IUI {
     public void showMenu(){
         while (true){
             scan = new Scanner(System.in);
-            System.out.println("Trin 1:");
+            System.out.println("\nTrin 1:");
             System.out.println("Vægten beder om, at der indtastes operatørnummer.");
             String opNumStr = wFunc.requestInput("Indtast operatørnummer:");
             System.out.println("Trin 2:");
@@ -37,11 +37,11 @@ public class WeightUI implements IUI {
                 break;
             }
 
-            System.out.println("Trin 3:");
+            System.out.println("\nTrin 3:");
             System.out.println("Operatørens navn findes i databasen og vises på vægten:");
             if (opNum == 12){
                 System.out.println("Bruger fundet: Anders And");
-                System.out.println("Trin 4:");
+                System.out.println("\nTrin 4:");
                 System.out.println("Operatøren kvitterer for at navnet er korrekt");
                 wFunc.getConfirmation("Bruger fundet: Anders And, tryk ok.");
             } else {
@@ -52,7 +52,7 @@ public class WeightUI implements IUI {
                 break;
             }
 
-            System.out.println("Trin 5:");
+            System.out.println("\nTrin 5:");
             System.out.println("Vægten beder om, at der indtastes batch nummer:");
             String batchNumStr = wFunc.requestInput("Indtast batch nummer");
             System.out.println("Trin 6:");
@@ -70,7 +70,7 @@ public class WeightUI implements IUI {
                 System.out.println("Batch ikke genkendt... Fortsætter");
             }
 
-            System.out.println("Trin 7:");
+            System.out.println("\nTrin 7:");
             System.out.println("Operatøren instrueres om, at vægten skal være ubelastet:");
             wFunc.getConfirmation("Sørg for vægt er ubelastet, tryk ok");
             System.out.println("Trin 8: Operatør kvitterer");
@@ -78,7 +78,7 @@ public class WeightUI implements IUI {
             System.out.println("Trin 9: Vægten tareres");
             wFunc.taraWeight();
 
-            System.out.println("Trin 10:");
+            System.out.println("\nTrin 10:");
             System.out.println("Operatøren instrueres om, at placere tara på vægten:");
             wFunc.getConfirmation("Placer tom beholder på vægt, tryk ok");
             System.out.println("Trin 11: Operatør kvitterer");
@@ -100,7 +100,7 @@ public class WeightUI implements IUI {
             System.out.println("Trin 13: Vægtens tareres");
             wFunc.taraWeight();
 
-            System.out.println("Trin 14:");
+            System.out.println("\nTrin 14:");
             System.out.println("Operatør instrueres i at placere netto på vægten:");
             wFunc.getConfirmation("Placer netto på vægt, tryk ok");
             System.out.println("Trin 15: Op kvitterer");
@@ -122,7 +122,7 @@ public class WeightUI implements IUI {
             System.out.println("Trin 17: Vægt tareres");
             wFunc.taraWeight();
 
-            System.out.println("Trin 18: Op instrueres i at fjerne brutto fra vægt");
+            System.out.println("\nTrin 18: Op instrueres i at fjerne brutto fra vægt");
             wFunc.getConfirmation("Fjern brutto fra vægt, tryk ok");
             System.out.println("Trin 19: Op: ok");
 
@@ -147,6 +147,12 @@ public class WeightUI implements IUI {
             System.out.println("Trin 23: tara vægt");
             wFunc.taraWeight();
             System.out.println("Vægt efter tara: " + wFunc.getWeight());
+
+            System.out.println("Program fuldført... " +
+                    "Tryk enter for at starte forfra");
+            if (!"".equals(scan.nextLine())){
+                break;
+            }
         }
     }
 }
