@@ -24,19 +24,12 @@ public class MettlerScale implements IMettlerScale {
 
     public String requestUserInput(String text){
         // We already return a read line from the following command. RM20 uses #2 response
-        scaleRequest(String.format("RM20 8 \"%s\" \"\" \"&3\"", text));
-        String returnString = "";
-        try{
-            returnString = in.readLine();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
+        String returnString = getDataFromRequest(text);
 
         return returnString.split("\"")[1];
     }
 
-    @Override
-    public boolean awaitConfirmation(String text){
+    private String getDataFromRequest(String text) {
         scaleRequest(String.format("RM20 8 \"%s\" \"\" \"&3\"", text));
         String returnString = "";
         try{
@@ -44,6 +37,12 @@ public class MettlerScale implements IMettlerScale {
         } catch (IOException e){
             e.printStackTrace();
         }
+        return returnString;
+    }
+
+    @Override
+    public boolean awaitConfirmation(String text){
+        String returnString = getDataFromRequest(text);
 
         return returnString.split(" ")[1].equals("A") ? true : false;
     }
