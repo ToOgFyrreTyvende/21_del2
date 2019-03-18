@@ -83,7 +83,7 @@ public class TUI implements IUI {
                     // set user1 role
                     user1.addRole("Operator");
                     System.out.println();
-
+                    /*
                     // -------------------- Testing -------------------- //
                     System.out.println("|------- Testing -------|");
                     System.out.println("Er input = UserDTO info?");
@@ -94,7 +94,7 @@ public class TUI implements IUI {
                     System.out.println("cpr:\t\t" + cpr1 + "|vs|" + user1.getCpr());
                     System.out.println("pass:\t\t" + password1 + "|vs|" + user1.getPassword());
                     // ---------------------- End ---------------------- //
-
+                    */
                     // Forsøger at oprette brugeren
                     try{
                         func.createUser(user1);
