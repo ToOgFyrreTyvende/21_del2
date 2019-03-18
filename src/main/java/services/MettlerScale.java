@@ -61,6 +61,9 @@ public class MettlerScale implements IMettlerScale {
         String returnString = "";
         try{
             returnString = in.readLine();
+            if (returnString.contains("I4")){
+                returnString = in.readLine();
+            }
         } catch (IOException e){
             e.printStackTrace();
         }
