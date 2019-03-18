@@ -36,15 +36,16 @@ public class MettlerScale implements IMettlerScale {
     }
 
     @Override
-    public String awaitConfirmation(String text){
+    public boolean awaitConfirmation(String text){
         scaleRequest(String.format("RM20 8 \"%s\" \"\" \"&3\"", text));
         String returnString = "";
-        try {
+        try{
             returnString = in.readLine();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
-        return returnString + ": Ok";
+
+        return returnString.split(" ")[1].equals("A") ? true : false;
     }
 
     @Override
