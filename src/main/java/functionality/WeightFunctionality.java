@@ -1,16 +1,16 @@
 package functionality;
 
-import services.MettlerScale;
+import services.IMettlerScale;
 
 public class WeightFunctionality implements IWeightFunctionality {
-    private MettlerScale scale;
+    private IMettlerScale scale;
 
-    public WeightFunctionality(MettlerScale scale){
+    public WeightFunctionality(IMettlerScale scale){
         this.scale = scale;
     }
 
     @Override
-    public String demandWeightInput(String msg){
+    public String requestInput(String msg){
         return scale.requestUserInput(msg);
     }
 
