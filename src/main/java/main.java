@@ -1,19 +1,23 @@
 import functionality.IUserFunctionality;
+import functionality.IWeightFunctionality;
 import functionality.UserFunctionality;
-import ui.TUI;
+import functionality.WeightFunctionality;
+import services.IMettlerScale;
+import services.MettlerScale;
+import ui.IUI;
 import dal.*;
+import ui.WeightUI;
 
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class main {
-    public static void main(String[] args) throws IOException, IUserDAO.DALException {
+    public static void main(String[] args) throws IOException, IUserDAO.DALException{
 
-        //utils.SQLTools.generateTable();
-        //IUserDAO daoDisk = new UserDAODisk();
         IUserDAO daoMySQL = new UserDAOMySQL();
         IUserFunctionality userFunc = new UserFunctionality(daoMySQL);
-        TUI ui = new TUI(userFunc);
+        IMettlerScale scale = new MettlerScale("127.0.0.1", 8000);
+        IWeightFunctionality wFunc = new WeightFunctionality(scale);
+        IUI ui = new WeightUI(wFunc);
 
         ui.showMenu();
     }

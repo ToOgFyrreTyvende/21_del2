@@ -8,50 +8,16 @@ import java.util.List;
 
 public class UserDAODisk implements IUserDAO {
 
-    public UserDAODisk() throws IOException {
+    public UserDAODisk() throws IOException{
     }
 
     public void open_file(){
 
     }
 
-// ---- GET USER -------------------------------------------------------------------------------------------------------
+    // ---- GET USER -------------------------------------------------------------------------------------------------------
     @Override
-    public UserDTO getUser(int userId) throws DALException {
-
-        List<UserDTO> user_list = new ArrayList<>();
-
-        try {
-
-            FileInputStream fis = new FileInputStream("src\\main\\resources\\disk.txt");
-
-            try {
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                user_list = (ArrayList) ois.readObject();
-                ois.close();
-            } catch (EOFException e) {
-                user_list = new ArrayList<>();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            fis.close();
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        for (UserDTO user : user_list) {
-            if (user.getUserId() == userId) {
-                return user;
-            }
-        }
-        return null;
-    }
-
-// ---- GET USER LIST --------------------------------------------------------------------------------------------------
-    @Override
-    public List<UserDTO> getUserList() throws DALException {
+    public UserDTO getUser(int userId) throws DALException{
 
         List<UserDTO> user_list = new ArrayList<>();
 
@@ -59,19 +25,53 @@ public class UserDAODisk implements IUserDAO {
 
             FileInputStream fis = new FileInputStream("src\\main\\resources\\disk.txt");
 
-            try {
+            try{
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 user_list = (ArrayList) ois.readObject();
                 ois.close();
-            } catch (EOFException e) {
+            } catch (EOFException e){
                 user_list = new ArrayList<>();
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
 
             fis.close();
 
-        }catch (IOException ioe){
+        } catch (IOException ioe){
+            ioe.printStackTrace();
+        }
+
+        for (UserDTO user : user_list){
+            if (user.getUserId() == userId){
+                return user;
+            }
+        }
+        return null;
+    }
+
+    // ---- GET USER LIST --------------------------------------------------------------------------------------------------
+    @Override
+    public List<UserDTO> getUserList() throws DALException{
+
+        List<UserDTO> user_list = new ArrayList<>();
+
+        try{
+
+            FileInputStream fis = new FileInputStream("src\\main\\resources\\disk.txt");
+
+            try{
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                user_list = (ArrayList) ois.readObject();
+                ois.close();
+            } catch (EOFException e){
+                user_list = new ArrayList<>();
+            } catch (ClassNotFoundException e){
+                e.printStackTrace();
+            }
+
+            fis.close();
+
+        } catch (IOException ioe){
             ioe.printStackTrace();
         }
 
@@ -79,9 +79,9 @@ public class UserDAODisk implements IUserDAO {
     }
 
 
-// ---- CREATE USER ----------------------------------------------------------------------------------------------------
+    // ---- CREATE USER ----------------------------------------------------------------------------------------------------
     @Override
-    public void createUser(UserDTO user) throws DALException {
+    public void createUser(UserDTO user) throws DALException{
 
         List<UserDTO> user_list = new ArrayList<>();
 
@@ -89,13 +89,13 @@ public class UserDAODisk implements IUserDAO {
 
             FileInputStream fis = new FileInputStream("src\\main\\resources\\disk.txt");
 
-            try {
+            try{
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 user_list = (ArrayList) ois.readObject();
                 ois.close();
-            } catch (EOFException e) {
+            } catch (EOFException e){
                 user_list = new ArrayList<>();
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
 
@@ -112,28 +112,28 @@ public class UserDAODisk implements IUserDAO {
             fos.close();
 
 
-        }catch (IOException ioe){
+        } catch (IOException ioe){
             ioe.printStackTrace();
         }
 
     }
 
-// ---- UPDATE USER ----------------------------------------------------------------------------------------------------
+    // ---- UPDATE USER ----------------------------------------------------------------------------------------------------
     @Override
-    public void updateUser(UserDTO inputUser) throws DALException {
+    public void updateUser(UserDTO inputUser) throws DALException{
         List<UserDTO> user_list = new ArrayList<>();
 
-        try {
+        try{
 
             FileInputStream fis = new FileInputStream("src\\main\\resources\\disk.txt");
 
-            try {
+            try{
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 user_list = (ArrayList) ois.readObject();
                 ois.close();
-            } catch (EOFException e) {
+            } catch (EOFException e){
                 user_list = new ArrayList<>();
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
 
@@ -141,9 +141,9 @@ public class UserDAODisk implements IUserDAO {
 
             int inputUserId = inputUser.getUserId();
             int i = 0;
-            for (UserDTO userInList : user_list) {
+            for (UserDTO userInList : user_list){
                 if (userInList.getUserId() == inputUserId){
-                    user_list.set(i,inputUser);
+                    user_list.set(i, inputUser);
                 }
                 i++;
             }
@@ -156,34 +156,34 @@ public class UserDAODisk implements IUserDAO {
             oos.close();
             fos.close();
 
-        } catch (IOException ioe) {
+        } catch (IOException ioe){
             ioe.printStackTrace();
         }
     }
 
-// ---- DELETE USER ----------------------------------------------------------------------------------------------------
+    // ---- DELETE USER ----------------------------------------------------------------------------------------------------
     @Override
-    public void deleteUser(int userId) throws DALException {
+    public void deleteUser(int userId) throws DALException{
         List<UserDTO> user_list = new ArrayList<>();
 
-        try {
+        try{
 
             FileInputStream fis = new FileInputStream("src\\main\\resources\\disk.txt");
 
-            try {
+            try{
                 ObjectInputStream ois = new ObjectInputStream(fis);
                 user_list = (ArrayList) ois.readObject();
                 ois.close();
-            } catch (EOFException e) {
+            } catch (EOFException e){
                 user_list = new ArrayList<>();
-            } catch (ClassNotFoundException e) {
+            } catch (ClassNotFoundException e){
                 e.printStackTrace();
             }
 
             fis.close();
 
             int i = 0;
-            for (UserDTO user : user_list) {
+            for (UserDTO user : user_list){
                 if (user.getUserId() == userId){
                     user_list.remove(i);
                 }
@@ -198,7 +198,7 @@ public class UserDAODisk implements IUserDAO {
             oos.close();
             fos.close();
 
-        } catch (IOException ioe) {
+        } catch (IOException ioe){
             ioe.printStackTrace();
         }
     }

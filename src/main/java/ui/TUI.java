@@ -6,7 +6,7 @@ import functionality.IUserFunctionality;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class TUI {
+public class TUI implements IUI {
     private IUserFunctionality func;
     private Scanner scan;
     private boolean keepGoing = true;
@@ -15,6 +15,7 @@ public class TUI {
         this.func = func;
     }
 
+    @Override
     public void showMenu(){
         while (keepGoing){
             scan = new Scanner(System.in);
@@ -82,7 +83,7 @@ public class TUI {
                     // set user1 role
                     user1.addRole("Operator");
                     System.out.println();
-
+                    /*
                     // -------------------- Testing -------------------- //
                     System.out.println("|------- Testing -------|");
                     System.out.println("Er input = UserDTO info?");
@@ -93,7 +94,7 @@ public class TUI {
                     System.out.println("cpr:\t\t" + cpr1 + "|vs|" + user1.getCpr());
                     System.out.println("pass:\t\t" + password1 + "|vs|" + user1.getPassword());
                     // ---------------------- End ---------------------- //
-
+                    */
                     // Forsøger at oprette brugeren
                     try{
                         func.createUser(user1);

@@ -13,18 +13,18 @@ public interface IUserFunctionality {
     void deleteUser(int userId) throws UserInputException;
 
 
-    public class UserInputException extends Exception {
+    class UserInputException extends Exception {
 
         /**
          *
          */
         private static final long serialVersionUID = 7355418246336739229L;
 
-        public UserInputException(String msg, Throwable e) {
-            super(msg,e);
+        public UserInputException(String msg, Throwable e){
+            super(msg, e);
         }
 
-        public UserInputException(String msg) {
+        public UserInputException(String msg){
             super(msg);
         }
 
