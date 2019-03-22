@@ -11,17 +11,18 @@ public class WeightFunctionality implements IWeightFunctionality {
 
     @Override
     public String requestInput(String msg){
-        return scale.requestUserInput(msg);
+        return scale.requestUserInput(msg).split("\"")[1];
     }
 
     @Override
-    public void getConfirmation(String msg){
-
+    public boolean getConfirmation(String msg) {
+        String returnString = scale.requestUserInput(msg);
+        return returnString.split(" ")[1].equals("A"); // we automatically return false
     }
 
     @Override
     public void taraWeight(){
-
+        scale.taraWeight();
     }
 
     @Override
@@ -29,8 +30,4 @@ public class WeightFunctionality implements IWeightFunctionality {
         return scale.getWeight();
     }
 
-    @Override
-    public void sendMessage(String msg){
-
-    }
 }

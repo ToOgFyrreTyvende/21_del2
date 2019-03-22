@@ -22,6 +22,7 @@ public class MettlerScale implements IMettlerScale {
         }
     }
 
+    @Override
     public String requestUserInput(String text){
         // We already return a read line from the following command. RM20 uses #2 response
         scaleRequest(String.format("RM20 8 \"%s\" \"\" \"&3\"", text));
@@ -32,25 +33,12 @@ public class MettlerScale implements IMettlerScale {
             e.printStackTrace();
         }
 
-        return returnString.split("\"")[1];
+        return returnString;
     }
 
     @Override
-    public boolean awaitConfirmation(String text){
-        scaleRequest(String.format("RM20 8 \"%s\" \"\" \"&3\"", text));
-        String returnString = "";
-        try{
-            returnString = in.readLine();
-        } catch (IOException e){
-            e.printStackTrace();
-        }
-
-        return returnString.split(" ")[1].equals("A") ? true : false;
-    }
-
-    @Override
-    public String taraWeight(String text){
-        return scaleRequest("T").split(" ")[6];
+    public String taraWeight(){
+        return scaleRequest("T").split(" ")[2];
     }
 
     @Override

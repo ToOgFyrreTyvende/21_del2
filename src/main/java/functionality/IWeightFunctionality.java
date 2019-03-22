@@ -6,8 +6,7 @@ package functionality;
 public interface IWeightFunctionality {
     String requestInput(String msg);
     //UserDTO getUser(int userID) throws UserInputException;
-    void getConfirmation(String msg);
+    boolean getConfirmation(String msg);
     void taraWeight();
     String getWeight();
-    void sendMessage(String msg);
 }
